@@ -1,5 +1,10 @@
-.content {
-    
+.github-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {   
     margin: 20px;
     color: red;
     font-size: 30px;

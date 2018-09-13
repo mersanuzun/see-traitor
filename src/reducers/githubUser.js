@@ -31,13 +31,15 @@ export default (state = initialState, action) => {
                 }
             }
         case types.FAILED_FETCH:
-            const message = action.data.response.status === 404 ? "Not Found" : "Servise Error"; 
+            const message = action.data.message ? action.data.message : (
+                (action.data.response && action.data.response.status === 404) ? "Not Found" : "Servise Error" 
+            );
             
             return {
                 ...state,
                 isFetching: false,
                 error: {
-                    statusCode: action.data.response.status,
+                    statusCode: action.data.response ? action.data.response.status : 501,
                     message
                 }
             }

@@ -61,13 +61,4 @@ class Tab extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    const activeTab = state.appView.userListTab.activeTab;
-    console.log(activeTab);
-
-    return {
-        activeTab
-    }
-}
-
-export default connect(mapStateToProps, actions)(Tab);
+export default Tab;

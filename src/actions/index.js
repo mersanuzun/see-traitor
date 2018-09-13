@@ -12,7 +12,6 @@ export const fetchFollowersAndFollowings = (username) => {
             axios.get(`${githubApiUrl}/users/${username}/followers`),
             axios.get(`${githubApiUrl}/users/${username}/following`)
         ]).then(res => {
-            // console.log(res)
             const linkRegex = /<(https:\/\/[\w+\.\/]+\?page\=(\w+))>;\s+rel=["']last["']/g;
             const followers = res[0].data;
             const followings = res[1].data;

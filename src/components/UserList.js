@@ -25,41 +25,21 @@ class UserList extends React.Component {
     }
 
     render() {
+        const {users, activeTab} = this.props;
+
         return (
             <div className="userlist-wrapper">
                 <div className="content">
-                    {
-                        this.props.isFetching ? <Loading /> : (
-                            this.props.error ? (
-                                this.props.error.message
-                            ) : (
-                                    <div>
-                                        <Tab />
-                                        <div className="users">
-                                            {
-                                                this.generateUsers(this.props.users)
-                                            }
-                                        </div>
-                                    </div>
-                                )
-                        )
-                    }
+                    <Tab activeTab={activeTab} />
+                    <div className="users">
+                        {
+                            this.generateUsers(users)
+                        }
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => {
-    const activeTab = state.appView.userListTab.activeTab;
-    const isFetching = state.githubUser.isFetching;
-
-    return {
-        users: state.githubUser.data[activeTab],
-        error: state.githubUser.error,
-        activeTab,
-        isFetching
-    }
-}
-
-export default connect(mapStateToProps)(UserList);
+export default UserList;

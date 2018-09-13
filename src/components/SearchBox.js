@@ -14,7 +14,6 @@ class SearchBox extends React.Component {
     }
 
     render() {
-        console.log(github)
         return (
             <div className="searchbox-wrapper">
                 <div className="github-wrapper">
