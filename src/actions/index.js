@@ -86,9 +86,17 @@ export const fetchFollowersAndFollowings = (username) => {
                 })
             })
         }).catch(err => {
+            const error = err.response ? {
+                status: err.response.status,
+                message: err.response.statusText
+            } : {
+                status: 501,
+                message: err.message
+            }
+
             dispatch({
                 type: types.FAILED_FETCH,
-                data: err
+                data: error
             });
         });
     }
